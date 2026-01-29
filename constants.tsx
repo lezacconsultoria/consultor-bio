@@ -2,7 +2,7 @@
 import React from 'react';
 import { FAQItem, Testimonial } from './types';
 
-export const LEANDRO_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuB74emnnaAAMdht6djkyeAfCtlIebPzgkLR7HKwkkMYlKCXCk0-DVuCChMcSlYq8bSv4tFNPtN_lE22lcu5oEXV8oQaDB18WvDrjyUSqhAKVtA5atDaDebicdfpeZqPBGpOM3XiEn6jr8x7P2STlgahWJXA3kCBjuem4yce2u41WJxvr5Ozco4_mcO0MapWDYdDVJ0D583AxOh4xn9o5iog2ZFBtG6GH-IPi9bKROCtXQOr1xRcLuWNdLLMY4uHkeo5CT7fIbSvngXE";
+export const LEANDRO_IMG = "/perfil-leandro.jpg";
 
 export const FAQS: FAQItem[] = [
   {

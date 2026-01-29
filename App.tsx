@@ -29,13 +29,6 @@ const App: React.FC = () => {
       </main>
 
       {!isSpecialPage && <Footer />}
-      
-      {/* Dynamic Nav Indicator for Dev/Demo */}
-      <div className="fixed bottom-4 left-4 z-[99] flex gap-2">
-        <Link to={AppRoutes.HOME} className="bg-slate-800 text-white text-[10px] px-2 py-1 rounded opacity-50 hover:opacity-100 transition">Inicio (Bio)</Link>
-        <Link to={AppRoutes.BOOKING} className="bg-slate-800 text-white text-[10px] px-2 py-1 rounded opacity-50 hover:opacity-100 transition">Booking</Link>
-        <Link to={AppRoutes.SUCCESS} className="bg-slate-800 text-white text-[10px] px-2 py-1 rounded opacity-50 hover:opacity-100 transition">Success</Link>
-      </div>
     </div>
   );
 };
