@@ -1,0 +1,75 @@
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { AppRoutes } from '../types';
+
+const Success: React.FC = () => {
+  const whatsappUrl = "https://api.whatsapp.com/send?phone=5491132980398&text=Lezac%20Consultoria%20I%20Me%20interesa%20conocer%20m%C3%A1s";
+
+  return (
+    <div className="bg-background-light dark:bg-background-dark min-h-[90vh] flex items-center justify-center py-20 px-6">
+      <div className="max-w-[800px] w-full mx-auto">
+        <div className="mb-12 flex items-center justify-center gap-3 text-emerald-500 bg-emerald-50 dark:bg-emerald-950/30 w-fit mx-auto px-6 py-3 rounded-full border border-emerald-100 dark:border-emerald-900/50">
+          <span className="material-symbols-outlined text-2xl fill-1">check_circle</span>
+          <span className="text-sm font-black tracking-[0.2em] uppercase">Sesión confirmada con éxito</span>
+        </div>
+
+        <div className="text-center space-y-8 mb-16">
+          <h1 className="text-brand-dark dark:text-white text-5xl md:text-6xl font-black leading-[1.1] tracking-tighter">
+            Gracias por su confianza. <br className="hidden md:block"/> Ahora, quiero invitarlo a dar un paso más allá.
+          </h1>
+          <p className="text-slate-400 text-xl font-medium leading-relaxed max-w-[680px] mx-auto">
+            Entiendo que el día a día de una distribuidora puede ser abrumador. Por eso, creé un espacio donde comparto claridad, no más ruido. Me gustaría que sea parte.
+          </p>
+        </div>
+
+        <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-10 md:p-16 border border-slate-100 dark:border-slate-800 shadow-2xl mb-16 relative overflow-hidden group">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-400/5 blur-[100px] rounded-full group-hover:bg-emerald-400/10 transition-colors duration-1000"></div>
+          
+          <div className="grid gap-12 relative z-10">
+            {[
+              { icon: "insights", title: "Insights semanales", desc: "Análisis directos sobre gestión comercial y optimización de procesos." },
+              { icon: "auto_stories", title: "Acceso anticipado", desc: "Sea el primero en recibir nuestros diagnósticos y ebooks estratégicos." },
+              { icon: "groups", title: "Consultoría grupal", desc: "Sesiones en vivo exclusivas para los miembros de la comunidad." }
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start gap-8 group/item">
+                <div className="flex-shrink-0 bg-slate-50 dark:bg-slate-800 size-14 rounded-2xl flex items-center justify-center border border-slate-100 dark:border-slate-700 group-hover/item:scale-110 transition-transform">
+                  <span className="material-symbols-outlined text-brand-dark dark:text-white text-2xl group-hover/item:text-emerald-400 transition-colors">{item.icon}</span>
+                </div>
+                <div>
+                  <h4 className="text-brand-dark dark:text-white font-black text-xl mb-2 tracking-tight">{item.title}</h4>
+                  <p className="text-slate-400 font-medium text-base">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center gap-8">
+          <a 
+            href={whatsappUrl} 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex w-full max-w-[560px] items-center justify-center gap-5 bg-emerald-500 hover:bg-emerald-600 transition-all text-white py-7 px-10 rounded-[2.5rem] text-2xl font-black tracking-tight shadow-3xl shadow-emerald-200 dark:shadow-emerald-950/20 active:scale-95"
+          >
+            <svg className="size-8 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.431 5.63 1.432h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+            </svg>
+            <span className="uppercase tracking-widest text-lg">Unirme a la Comunidad B2B</span>
+          </a>
+          
+          <div className="flex items-center gap-3 text-slate-400 text-sm font-bold uppercase tracking-widest">
+            <span className="material-symbols-outlined text-lg fill-1">verified_user</span>
+            <span>Espacio 100% libre de spam. Solo valor estratégico.</span>
+          </div>
+          
+          <Link to={AppRoutes.HOME} className="text-primary font-bold text-xs hover:underline uppercase tracking-widest mt-4">
+            Volver al inicio
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Success;

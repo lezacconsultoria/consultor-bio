@@ -1,0 +1,8 @@
+{
+  "name": "LEZAC Strategic B2B Consultancy",
+  "description": "Premium landing and booking platform for industrial and distribution consultancy, featuring real-time booking, FAQ management, and lead generation.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
