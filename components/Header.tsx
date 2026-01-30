@@ -11,7 +11,7 @@ const Header: React.FC = () => {
           <img
             src="/logo-lezac.png"
             alt="LEZAC"
-            className="h-10 group-hover:scale-105 transition-transform"
+            className="h-7 md:h-10 group-hover:scale-105 transition-transform"
           />
         </Link>
         <div className="flex items-center gap-6">
@@ -21,9 +21,9 @@ const Header: React.FC = () => {
           </div>
           <Link
             to={AppRoutes.BOOKING}
-            className="text-xs font-bold px-6 py-2.5 bg-primary text-white rounded-full hover:bg-primary-dark transition-all shadow-lg shadow-primary/20 uppercase tracking-wider"
+            className="text-[10px] md:text-xs font-bold px-4 md:px-6 py-2 md:py-2.5 bg-primary text-white rounded-full hover:bg-primary-dark transition-all shadow-lg shadow-primary/20 uppercase tracking-wider whitespace-nowrap"
           >
-            Reservar Sesión
+            Agendar Llamada
           </Link>
         </div>
       </div>

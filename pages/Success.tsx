@@ -11,34 +11,34 @@ const Success: React.FC = () => {
       <div className="max-w-[800px] w-full mx-auto">
         <div className="mb-12 flex items-center justify-center gap-3 text-emerald-500 bg-emerald-50 dark:bg-emerald-950/30 w-fit mx-auto px-6 py-3 rounded-full border border-emerald-100 dark:border-emerald-900/50">
           <span className="material-symbols-outlined text-2xl fill-1">check_circle</span>
-          <span className="text-sm font-black tracking-[0.2em] uppercase">Sesión confirmada con éxito</span>
+          <span className="text-[10px] md:text-sm font-black tracking-[0.2em] uppercase">Sesión confirmada con éxito</span>
         </div>
 
         <div className="text-center space-y-8 mb-16">
-          <h1 className="text-brand-dark dark:text-white text-5xl md:text-6xl font-black leading-[1.1] tracking-tighter">
-            Gracias por su confianza. <br className="hidden md:block"/> Ahora, quiero invitarlo a dar un paso más allá.
+          <h1 className="text-brand-dark dark:text-white text-3xl md:text-6xl font-black leading-[1.1] tracking-tighter">
+            Gracias por su confianza. <br className="hidden md:block" /> Ahora, quiero invitarlo a dar un paso más allá.
           </h1>
           <p className="text-slate-400 text-xl font-medium leading-relaxed max-w-[680px] mx-auto">
             Entiendo que el día a día de una distribuidora puede ser abrumador. Por eso, creé un espacio donde comparto claridad, no más ruido. Me gustaría que sea parte.
           </p>
         </div>
 
-        <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-10 md:p-16 border border-slate-100 dark:border-slate-800 shadow-2xl mb-16 relative overflow-hidden group">
+        <div className="bg-white dark:bg-slate-900 rounded-[3rem] py-10 px-6 md:p-16 border border-slate-100 dark:border-slate-800 shadow-2xl mb-16 relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-400/5 blur-[100px] rounded-full group-hover:bg-emerald-400/10 transition-colors duration-1000"></div>
-          
-          <div className="grid gap-12 relative z-10">
+
+          <div className="grid gap-8 md:gap-12 relative z-10">
             {[
               { icon: "insights", title: "Insights semanales", desc: "Análisis directos sobre gestión comercial y optimización de procesos." },
               { icon: "auto_stories", title: "Acceso anticipado", desc: "Sea el primero en recibir nuestros diagnósticos y ebooks estratégicos." },
               { icon: "groups", title: "Consultoría grupal", desc: "Sesiones en vivo exclusivas para los miembros de la comunidad." }
             ].map((item, idx) => (
-              <div key={idx} className="flex items-start gap-8 group/item">
-                <div className="flex-shrink-0 bg-slate-50 dark:bg-slate-800 size-14 rounded-2xl flex items-center justify-center border border-slate-100 dark:border-slate-700 group-hover/item:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-brand-dark dark:text-white text-2xl group-hover/item:text-emerald-400 transition-colors">{item.icon}</span>
+              <div key={idx} className="flex items-start gap-4 md:gap-8 group/item">
+                <div className="flex-shrink-0 bg-slate-50 dark:bg-slate-800 size-10 md:size-14 rounded-xl md:rounded-2xl flex items-center justify-center border border-slate-100 dark:border-slate-700 group-hover/item:scale-110 transition-transform">
+                  <span className="material-symbols-outlined text-brand-dark dark:text-white text-xl md:text-2xl group-hover/item:text-emerald-400 transition-colors">{item.icon}</span>
                 </div>
                 <div>
-                  <h4 className="text-brand-dark dark:text-white font-black text-xl mb-2 tracking-tight">{item.title}</h4>
-                  <p className="text-slate-400 font-medium text-base">{item.desc}</p>
+                  <h4 className="text-brand-dark dark:text-white font-black text-lg md:text-xl mb-1 md:mb-2 tracking-tight">{item.title}</h4>
+                  <p className="text-slate-400 font-medium text-sm md:text-base">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -46,8 +46,8 @@ const Success: React.FC = () => {
         </div>
 
         <div className="flex flex-col items-center gap-8">
-          <a 
-            href={whatsappUrl} 
+          <a
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex w-full max-w-[560px] items-center justify-center gap-5 bg-emerald-500 hover:bg-emerald-600 transition-all text-white py-7 px-10 rounded-[2.5rem] text-2xl font-black tracking-tight shadow-3xl shadow-emerald-200 dark:shadow-emerald-950/20 active:scale-95"
@@ -57,12 +57,12 @@ const Success: React.FC = () => {
             </svg>
             <span className="uppercase tracking-widest text-lg">Unirme a la Comunidad B2B</span>
           </a>
-          
+
           <div className="flex items-center gap-3 text-slate-400 text-sm font-bold uppercase tracking-widest">
             <span className="material-symbols-outlined text-lg fill-1">verified_user</span>
             <span>Espacio 100% libre de spam. Solo valor estratégico.</span>
           </div>
-          
+
           <Link to={AppRoutes.HOME} className="text-primary font-bold text-xs hover:underline uppercase tracking-widest mt-4">
             Volver al inicio
           </Link>

@@ -7,7 +7,7 @@ import { AppRoutes } from '../types';
 const Bio: React.FC = () => {
   const navigate = useNavigate();
   const whatsappUrl = "https://api.whatsapp.com/send?phone=5491132980398&text=Lezac%20Consultoria%20I%20Me%20interesa%20conocer%20m%C3%A1s";
-  const ebookDownloadUrl = "https://drive.usercontent.google.com/download?id=19Sc06RUuOc-kdD088Kim5x6l88VNl-jr&export=download&authuser=0&confirm=t&uuid=0fde222c-41cf-4e47-ab05-a4fcd90b08f4&at=APcXIO0LSm1oBowCcMpUZuUniWyF:1769695582926";
+  const ebookDownloadUrl = "https://drive.usercontent.google.com/download?id=1KVvBKqJXwNQ-X79mlAC3otr9792zVksA&export=download&authuser=0&confirm=t&uuid=dea04014-21d5-4d53-bc72-e4e18b014617&at=APcXIO0Z6agnHzw2n0fZ7hJomnL6:1769776045213";
   const calendlyUrl = "https://calendly.com/lezacconsultoria/asesoria-comercial";
 
   const [formData, setFormData] = useState({
@@ -165,7 +165,7 @@ const Bio: React.FC = () => {
                 <span className="text-primary font-black text-[10px] tracking-[0.3em] uppercase">RECURSO GRATUITO</span>
               </div>
               <div>
-                <h3 className="text-4xl lg:text-5xl font-black text-brand-dark dark:text-white mb-6 leading-[1.1] tracking-tight">Descarga Gratis: Guía de Inteligencia Comercial B2B</h3>
+                <h3 className="text-3xl lg:text-5xl font-black text-brand-dark dark:text-white mb-6 leading-[1.1] tracking-tight">Descarga Gratis: Guía de Inteligencia Comercial B2B</h3>
                 <p className="text-slate-400 text-lg font-medium leading-relaxed">Los 5 indicadores clave que toda distribuidora debe monitorear para crecer.</p>
               </div>
               <form className="flex flex-col gap-4 mt-4 w-full" onSubmit={handleEbookSubmit}>
@@ -206,18 +206,17 @@ const Bio: React.FC = () => {
                   type="submit"
                   className="bg-primary hover:bg-primary-dark text-white font-black tracking-widest py-6 px-10 rounded-2xl shadow-2xl shadow-primary/30 transition-all flex items-center justify-center gap-4 group active:scale-95 text-base uppercase mt-2"
                 >
-                  ENVIAR EBOOK
+                  OBTENER EBOOK
                   <span className="material-symbols-outlined text-2xl group-hover:translate-y-1 transition-transform">download</span>
                 </button>
-                <a
-                  href={calendlyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => { window.scrollTo(0, 0); navigate(AppRoutes.BOOKING); }}
                   className="w-full py-6 bg-emerald-500 hover:bg-emerald-600 text-white rounded-2xl font-black tracking-widest text-sm uppercase transition-all flex items-center justify-center gap-3 active:scale-95 shadow-xl shadow-emerald-200 dark:shadow-none"
                 >
                   <span className="material-symbols-outlined text-xl">calendar_today</span>
-                  AGENDA UNA LLAMADA
-                </a>
+                  AGENDAR LLAMADA
+                </button>
               </form>
             </div>
           </div>
@@ -235,11 +234,11 @@ const Bio: React.FC = () => {
         </section>
 
         {/* Final CTA */}
-        <section className="bg-brand-dark p-16 md:p-24 rounded-[3.5rem] shadow-2xl text-center relative overflow-hidden">
+        <section className="bg-brand-dark p-8 md:p-24 rounded-[3.5rem] shadow-2xl text-center relative overflow-hidden">
           <div className="absolute -top-32 -right-32 h-96 w-96 bg-primary/20 blur-[140px] rounded-full"></div>
           <div className="absolute -bottom-32 -left-32 h-96 w-96 bg-emerald-500/10 blur-[140px] rounded-full"></div>
           <div className="relative z-10">
-            <h3 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">¿Querés claridad comercial real?</h3>
+            <h3 className="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight">¿Querés claridad comercial real?</h3>
             <p className="text-slate-400 text-xl font-medium mb-12 max-w-xl mx-auto leading-relaxed">Agenda una sesión diagnóstica y transformá tus datos en facturación real.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
               <button

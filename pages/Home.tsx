@@ -163,7 +163,7 @@ const Home: React.FC = () => {
             <div
               className="calendly-inline-widget w-full"
               data-url="https://calendly.com/lezacconsultoria/asesoria-comercial?hide_event_type_details=1&hide_gdpr_banner=1"
-              style={{ minWidth: '320px', height: '700px' }}
+              style={{ minWidth: '320px', height: '800px' }}
             ></div>
           </div>
         </div>
