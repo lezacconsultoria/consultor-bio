@@ -9,7 +9,10 @@ const Bio: React.FC = () => {
   const whatsappUrl = "https://api.whatsapp.com/send?phone=5491132980398&text=Lezac%20Consultoria%20I%20Me%20interesa%20conocer%20m%C3%A1s";
   const ebookDownloadUrl = "https://drive.usercontent.google.com/download?id=1KVvBKqJXwNQ-X79mlAC3otr9792zVksA&export=download&authuser=0&confirm=t&uuid=dea04014-21d5-4d53-bc72-e4e18b014617&at=APcXIO0Z6agnHzw2n0fZ7hJomnL6:1769776045213";
   const calendlyUrl = "https://calendly.com/lezacconsultoria/asesoria-comercial";
+  // REMPLAZAR ESTA URL CON LA DEL PASO 1.7
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbygytdHK2rPRLokWmNFlBeB5jusDW9AWALGbtiE6_Pa-dMmZR2okGTf98Sq9NZfxg0-/exec";
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,7 +24,7 @@ const Bio: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleEbookSubmit = (e: React.FormEvent) => {
+  const handleEbookSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Basic validation
@@ -39,8 +42,30 @@ const Bio: React.FC = () => {
       return;
     }
 
-    // Success: Redirect to download
-    window.location.href = ebookDownloadUrl;
+    setIsSubmitting(true);
+
+    try {
+      // Intentamos enviar los datos a Google Sheets
+      if (GOOGLE_SCRIPT_URL && !GOOGLE_SCRIPT_URL.includes("TU_URL")) {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors', // Importante para Google Scripts
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+      }
+
+      // Éxito o salteado si no hay URL configurada: Redirigir a descarga
+      window.location.href = ebookDownloadUrl;
+    } catch (error) {
+      console.error("Error al enviar el formulario:", error);
+      alert("Hubo un error al procesar tu solicitud, pero te redirigiremos a la descarga igualmente.");
+      window.location.href = ebookDownloadUrl;
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -204,10 +229,12 @@ const Bio: React.FC = () => {
                 </div>
                 <button
                   type="submit"
-                  className="bg-primary hover:bg-primary-dark text-white font-black tracking-widest py-6 px-10 rounded-2xl shadow-2xl shadow-primary/30 transition-all flex items-center justify-center gap-4 group active:scale-95 text-base uppercase mt-2"
+                  disabled={isSubmitting}
+                  className={`bg-primary hover:bg-primary-dark text-white font-black tracking-widest py-6 px-10 rounded-2xl shadow-2xl shadow-primary/30 transition-all flex items-center justify-center gap-4 group active:scale-95 text-base uppercase mt-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
-                  OBTENER EBOOK
-                  <span className="material-symbols-outlined text-2xl group-hover:translate-y-1 transition-transform">download</span>
+                  {isSubmitting ? 'ENVIANDO...' : 'OBTENER EBOOK'}
+                  {!isSubmitting && <span className="material-symbols-outlined text-2xl group-hover:translate-y-1 transition-transform">download</span>}
+                  {isSubmitting && <div className="animate-spin size-5 border-2 border-white/30 border-t-white rounded-full"></div>}
                 </button>
                 <button
                   type="button"
