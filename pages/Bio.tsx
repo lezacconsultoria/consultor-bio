@@ -7,7 +7,7 @@ import { AppRoutes } from '../types';
 const Bio: React.FC = () => {
   const navigate = useNavigate();
   const whatsappUrl = "https://api.whatsapp.com/send?phone=5491132980398&text=Lezac%20Consultoria%20I%20Me%20interesa%20conocer%20m%C3%A1s";
-  const ebookDownloadUrl = "https://drive.usercontent.google.com/download?id=1KVvBKqJXwNQ-X79mlAC3otr9792zVksA&export=download&authuser=0&confirm=t&uuid=dea04014-21d5-4d53-bc72-e4e18b014617&at=APcXIO0Z6agnHzw2n0fZ7hJomnL6:1769776045213";
+  const ebookDownloadUrl = "/Ebook%20I%20Direcci%C3%B3n%20Comercial%202026.pdf";
   const calendlyUrl = "https://calendly.com/lezacconsultoria/asesoria-comercial";
   // REMPLAZAR ESTA URL CON LA DEL PASO 1.7
   const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbygytdHK2rPRLokWmNFlBeB5jusDW9AWALGbtiE6_Pa-dMmZR2okGTf98Sq9NZfxg0-/exec";
