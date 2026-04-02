@@ -9,8 +9,8 @@ const Bio: React.FC = () => {
   const whatsappUrl = "https://api.whatsapp.com/send?phone=5491132980398&text=Lezac%20Consultoria%20I%20Me%20interesa%20conocer%20m%C3%A1s";
   const ebookDownloadUrl = "/Ebook%20I%20Direcci%C3%B3n%20Comercial%202026.pdf";
   const calendlyUrl = "https://calendly.com/lezacconsultoria/asesoria-comercial";
-  // REMPLAZAR ESTA URL CON LA DEL PASO 1.7
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbygytdHK2rPRLokWmNFlBeB5jusDW9AWALGbtiE6_Pa-dMmZR2okGTf98Sq9NZfxg0-/exec";
+  // IMPORTANTE: URL de tu webhook en n8n
+  const N8N_WEBHOOK_URL = "https://n8n.lezacconsultoria.com/webhook-test/ebook-download";
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -45,25 +45,31 @@ const Bio: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      // Intentamos enviar los datos a Google Sheets
-      if (GOOGLE_SCRIPT_URL && !GOOGLE_SCRIPT_URL.includes("TU_URL")) {
-        await fetch(GOOGLE_SCRIPT_URL, {
+      // Intentamos enviar los datos al Webhook de n8n
+      if (N8N_WEBHOOK_URL) {
+        // Usamos URLSearchParams para enviar como form-urlencoded, 
+        // lo que es compatible con no-cors y n8n lo procesa fácilmente.
+        const params = new URLSearchParams();
+        params.append('name', formData.name);
+        params.append('email', formData.email);
+        params.append('cargo', formData.cargo);
+
+        await fetch(N8N_WEBHOOK_URL, {
           method: 'POST',
-          mode: 'no-cors', // Importante para Google Scripts
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
+          mode: 'no-cors',
+          body: params,
         });
       }
-
-      // Éxito o salteado si no hay URL configurada: Redirigir a descarga
-      window.location.href = ebookDownloadUrl;
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
-      alert("Hubo un error al procesar tu solicitud, pero te redirigiremos a la descarga igualmente.");
-      window.location.href = ebookDownloadUrl;
     } finally {
+      // Iniciamos la descarga siempre, sin importar si el webhook falló
+      const link = document.createElement('a');
+      link.href = ebookDownloadUrl;
+      link.setAttribute('download', 'Ebook I Dirección Comercial 2026.pdf');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
       setIsSubmitting(false);
     }
   };
@@ -221,10 +227,10 @@ const Bio: React.FC = () => {
                     required
                   >
                     <option value="">Tu cargo</option>
-                    <option value="owner">Dueño / Director</option>
-                    <option value="manager">Gerente Comercial</option>
-                    <option value="consultant">Consultor</option>
-                    <option value="other">Otro</option>
+                    <option value="Dueño / Director">Dueño / Director</option>
+                    <option value="Gerente Comercial">Gerente Comercial</option>
+                    <option value="Consultor">Consultor</option>
+                    <option value="Otro">Otro</option>
                   </select>
                 </div>
                 <button
