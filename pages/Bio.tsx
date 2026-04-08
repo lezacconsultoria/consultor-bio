@@ -10,7 +10,7 @@ const Bio: React.FC = () => {
   const ebookDownloadUrl = "/Ebook%20I%20Direcci%C3%B3n%20Comercial%202026.pdf";
   const calendlyUrl = "https://calendly.com/lezacconsultoria/asesoria-comercial";
   // IMPORTANTE: URL de tu webhook en n8n
-  const N8N_WEBHOOK_URL = "https://n8n.lezacconsultoria.com/webhook-test/ebook-download";
+  const N8N_WEBHOOK_URL = "https://n8n.lezacconsultoria.com/webhook/ebook-download";
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
