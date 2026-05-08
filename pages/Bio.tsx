@@ -10,7 +10,7 @@ const Bio: React.FC = () => {
   const ebookDownloadUrl = "/Ebook%20I%20Direcci%C3%B3n%20Comercial%202026.pdf";
   const calendlyUrl = "https://calendly.com/lezacconsultoria/asesoria-comercial";
   // IMPORTANTE: URL de tu webhook en n8n
-  const N8N_WEBHOOK_URL = "https://n8n.lezacconsultoria.com/webhook/ebook-download";
+  const N8N_WEBHOOK_URL = "https://n8n.lezacconsultoria.com/webhook-test/ebook-download";
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -78,9 +78,10 @@ const Bio: React.FC = () => {
     <div className="bg-background-light dark:bg-background-dark min-h-screen">
       <main className="mx-auto flex w-full max-w-[1100px] flex-col gap-24 px-6 py-16 pb-32">
         {/* Intro */}
-        <section className="flex flex-col items-center text-center gap-6">
-          <div className="flex flex-col items-center">
-            <div className="size-24 rounded-full border border-slate-100 p-1 mb-6 shadow-xl overflow-hidden bg-white">
+        <section className="flex flex-col items-center text-center gap-6 relative">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
+          <div className="flex flex-col items-center relative z-10">
+            <div className="size-40 rounded-full border border-slate-100 p-1 mb-6 shadow-xl overflow-hidden bg-white">
               <img alt="Leandro Zacaría" className="h-full w-full rounded-full object-cover" src={LEANDRO_IMG} />
             </div>
             <div className="flex items-center gap-2 mb-4">
@@ -161,6 +162,142 @@ const Bio: React.FC = () => {
                     {item.desc}
                   </p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Services */}
+        <section className="flex flex-col gap-12">
+          <div className="flex flex-col items-center text-center gap-4">
+            <div className="bg-primary/10 text-primary text-[10px] font-black tracking-widest px-5 py-2 rounded-full uppercase">
+              SERVICIOS
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-brand-dark dark:text-white leading-[1.1] tracking-tight">
+              Todo lo que tu empresa<br />
+              <span className="italic text-emerald-400">necesita para crecer.</span>
+            </h2>
+            <p className="text-slate-400 text-lg font-medium max-w-xl leading-relaxed">
+              Soluciones de inteligencia comercial para ordenar, optimizar y escalar tu empresa B2B.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: "compass_calibration",
+                tag: "ANÁLISIS Y DIAGNÓSTICO",
+                title: "Smart Brújula Comercial",
+                desc: "Ordená tu operación con información clara, detectá oportunidades reales y definí el foco comercial de tu empresa.",
+                accent: "emerald",
+                href: "https://lezacconsultoria.com/smart-brujula",
+              },
+              {
+                icon: "chat",
+                tag: "AUTOMATIZACIÓN",
+                title: "WA Smart Ventas",
+                desc: "Transformá WhatsApp en un canal de ventas inteligente, automatizando pedidos y seguimiento.",
+                accent: "emerald",
+                href: "https://lezacconsultoria.com/wa-smart-ventas",
+              },
+              {
+                icon: "pie_chart",
+                tag: "EXPANSIÓN TERRITORIAL",
+                title: "Censo Comercial",
+                desc: "Identificá todos los puntos de venta reales y potenciales para crecer con información validada.",
+                accent: "purple",
+                href: "https://lezacconsultoria.com/censo-comercial",
+              },
+              {
+                icon: "location_on",
+                tag: "INTELIGENCIA TERRITORIAL",
+                title: "Geolocalización de Clientes",
+                desc: "Visualizá tu negocio en el mapa y tomá decisiones estratégicas sobre zonas y cobertura.",
+                accent: "sky",
+                href: "https://lezacconsultoria.com/geolocalizacion",
+              },
+              {
+                icon: "route",
+                tag: "OPTIMIZACIÓN DE RUTAS",
+                title: "Ruteo Comercial",
+                desc: "Organizá recorridos eficientes para tu equipo, reduciendo costos y mejorando la cobertura.",
+                accent: "orange",
+                href: "https://lezacconsultoria.com/ruteo-comercial",
+              },
+              {
+                icon: "groups",
+                tag: "GESTIÓN DE CLIENTES",
+                title: "CRM Smart",
+                desc: "Centralizá información comercial, mejorá el seguimiento y gestioná clientes y prospectos de forma profesional.",
+                accent: "slate",
+                href: null,
+              },
+            ].map((s, idx) => {
+              const colors: Record<string, { icon: string; tag: string; bar: string }> = {
+                emerald: { icon: "bg-emerald-400/10 text-emerald-400", tag: "text-emerald-400/70", bar: "bg-emerald-400/40" },
+                purple:  { icon: "bg-violet-500/10 text-violet-400",  tag: "text-violet-400/70",  bar: "bg-violet-400/40"  },
+                sky:     { icon: "bg-sky-400/10 text-sky-400",         tag: "text-sky-400/70",     bar: "bg-sky-400/40"     },
+                orange:  { icon: "bg-orange-400/10 text-orange-400",   tag: "text-orange-400/70",  bar: "bg-orange-400/40"  },
+                slate:   { icon: "bg-slate-400/10 text-slate-400",     tag: "text-slate-400/70",   bar: "bg-slate-400/40"   },
+              };
+              const c = colors[s.accent];
+              const cardClass = "group bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-[2rem] p-8 flex flex-col gap-5 hover:shadow-xl transition-all duration-300";
+              const inner = (
+                <>
+                  <div className="flex items-start justify-between">
+                    <div className={`size-12 rounded-2xl flex items-center justify-center ${c.icon} group-hover:scale-110 transition-transform`}>
+                      <span className="material-symbols-outlined text-2xl">{s.icon}</span>
+                    </div>
+                    <span className={`text-[9px] font-black tracking-widest uppercase ${c.tag}`}>{s.tag}</span>
+                  </div>
+                  <div className="flex flex-col gap-2 flex-1">
+                    <h4 className="text-lg font-black text-brand-dark dark:text-white tracking-tight">{s.title}</h4>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm font-medium leading-relaxed">{s.desc}</p>
+                  </div>
+                  <div className="flex items-center justify-between mt-auto">
+                    {s.href
+                      ? <span className={`text-[10px] font-black tracking-widest uppercase ${c.tag} flex items-center gap-1`}>CONOCER MÁS →</span>
+                      : <span className="text-[10px] font-black tracking-widest uppercase text-slate-400/50">PRÓXIMAMENTE</span>
+                    }
+                    <div className={`h-0.5 w-8 rounded-full ${c.bar} group-hover:w-16 transition-all duration-500`}></div>
+                  </div>
+                </>
+              );
+              return s.href
+                ? <a key={idx} href={s.href} target="_blank" rel="noopener noreferrer" className={cardClass}>{inner}</a>
+                : <div key={idx} className={cardClass}>{inner}</div>;
+            })}
+          </div>
+        </section>
+
+        {/* Process */}
+        <section className="flex flex-col gap-12">
+          <div className="flex flex-col items-center text-center gap-4">
+            <div className="bg-emerald-400/10 text-emerald-400 text-[10px] font-black tracking-widest px-5 py-2 rounded-full uppercase">
+              METODOLOGÍA LEZAC
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-brand-dark dark:text-white leading-[1.1] tracking-tight">
+              Cómo <span className="italic text-emerald-400">transformamos</span> tu empresa
+            </h2>
+            <p className="text-slate-400 text-lg font-medium max-w-lg leading-relaxed">
+              Un proceso probado en más de 100 empresas en 4 países de LATAM.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: "01", title: "Diagnóstico", desc: "Auditamos la operación comercial y detectamos los focos donde más se pierde." },
+              { step: "02", title: "Diseño", desc: "Construimos un plan comercial con métricas, metas y estructura de equipo." },
+              { step: "03", title: "Implementación", desc: "Ejecutamos en el campo en equipo, con dashboards y seguimiento diario." },
+              { step: "04", title: "Resultados", desc: "Medimos el impacto con datos reales y ajustamos para garantizar crecimiento sostenido." },
+            ].map((p, idx) => (
+              <div key={idx} className="relative bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-[2rem] p-8 flex flex-col gap-4 hover:border-primary/20 hover:shadow-xl transition-all duration-300">
+                <span className="text-5xl font-black text-primary/20 leading-none">{p.step}</span>
+                <h4 className="text-lg font-black text-brand-dark dark:text-white tracking-tight">{p.title}</h4>
+                <p className="text-slate-500 dark:text-slate-400 text-sm font-medium leading-relaxed">{p.desc}</p>
+                {idx < 3 && (
+                  <div className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 text-primary/30 text-2xl font-black">→</div>
+                )}
               </div>
             ))}
           </div>
