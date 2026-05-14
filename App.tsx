@@ -6,6 +6,7 @@ import Bio from './pages/Bio';
 import Success from './pages/Success';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Chatbot from './components/Chatbot';
 import { AppRoutes } from './types';
 
 const App: React.FC = () => {
@@ -29,6 +30,7 @@ const App: React.FC = () => {
       </main>
 
       {!isSpecialPage && <Footer />}
+      <Chatbot />
     </div>
   );
 };
