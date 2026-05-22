@@ -10,7 +10,7 @@ const Bio: React.FC = () => {
   const ebookDownloadUrl = "/Ebook%20I%20Direcci%C3%B3n%20Comercial%202026.pdf";
   const calendlyUrl = "https://calendly.com/lezacconsultoria/asesoria-comercial";
   // IMPORTANTE: URL de tu webhook en n8n
-  const N8N_WEBHOOK_URL = "https://n8n.lezacconsultoria.com/webhook-test/ebook-download";
+  const N8N_WEBHOOK_URL = "https://n8n.lezacconsultoria.com/webhook/ebook-download";
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -235,10 +235,10 @@ const Bio: React.FC = () => {
             ].map((s, idx) => {
               const colors: Record<string, { icon: string; tag: string; bar: string }> = {
                 emerald: { icon: "bg-emerald-400/10 text-emerald-400", tag: "text-emerald-400/70", bar: "bg-emerald-400/40" },
-                purple:  { icon: "bg-violet-500/10 text-violet-400",  tag: "text-violet-400/70",  bar: "bg-violet-400/40"  },
-                sky:     { icon: "bg-sky-400/10 text-sky-400",         tag: "text-sky-400/70",     bar: "bg-sky-400/40"     },
-                orange:  { icon: "bg-orange-400/10 text-orange-400",   tag: "text-orange-400/70",  bar: "bg-orange-400/40"  },
-                slate:   { icon: "bg-slate-400/10 text-slate-400",     tag: "text-slate-400/70",   bar: "bg-slate-400/40"   },
+                purple: { icon: "bg-violet-500/10 text-violet-400", tag: "text-violet-400/70", bar: "bg-violet-400/40" },
+                sky: { icon: "bg-sky-400/10 text-sky-400", tag: "text-sky-400/70", bar: "bg-sky-400/40" },
+                orange: { icon: "bg-orange-400/10 text-orange-400", tag: "text-orange-400/70", bar: "bg-orange-400/40" },
+                slate: { icon: "bg-slate-400/10 text-slate-400", tag: "text-slate-400/70", bar: "bg-slate-400/40" },
               };
               const c = colors[s.accent];
               const cardClass = "group bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-[2rem] p-8 flex flex-col gap-5 hover:shadow-xl transition-all duration-300";

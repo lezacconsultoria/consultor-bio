@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 const WEBHOOK_URL = 'https://n8n.lezacconsultoria.com/webhook/lezac-chat';
 const STORAGE_KEY = 'lezac_chat';
 const MAX_MESSAGES = 30;
-const WELCOME_MSG = '¡Hola! Soy el asistente de Lezac Consultoria. ¿En qué puedo ayudarte hoy?';
+const WELCOME_MSG = 'Soy Lezac, tu asistente comercial 👋 si deseas me puedes contar en que te gustaría que te ayude en tu negocio.';
 
 interface ChatMessage {
   role: 'user' | 'bot';
@@ -156,16 +156,16 @@ const Chatbot: React.FC = () => {
     <>
       <style>{`
         @keyframes lz-pulse {
-          0%, 100% { box-shadow: 0 4px 24px rgba(118,23,207,0.35), 0 0 0 0 rgba(118,23,207,0.4); }
-          50% { box-shadow: 0 4px 24px rgba(118,23,207,0.35), 0 0 0 10px rgba(118,23,207,0); }
+          0%, 100% { box-shadow: 0 4px 24px rgba(37,245,164,0.45), 0 0 0 0 rgba(37,245,164,0.4); }
+          50% { box-shadow: 0 4px 24px rgba(37,245,164,0.45), 0 0 0 10px rgba(37,245,164,0); }
         }
         #lz-chat-bubble {
           animation: lz-pulse 2.2s ease-in-out infinite;
         }
-        .lz-msg-user { align-self: flex-end; background: #7617cf; color: #fff; border-radius: 16px 16px 4px 16px; padding: 10px 14px; max-width: 80%; font-size: 14px; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
+        .lz-msg-user { align-self: flex-end; background: #25F5A4; color: #0A0A0B; border-radius: 16px 16px 4px 16px; padding: 10px 14px; max-width: 80%; font-size: 14px; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
         .lz-msg-bot { align-self: flex-start; background: #f3f0f8; color: #1a1a2e; border-radius: 16px 16px 16px 4px; padding: 10px 14px; max-width: 80%; font-size: 14px; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
         .lz-typing { align-self: flex-start; display: flex; gap: 5px; padding: 12px 16px; background: #f3f0f8; border-radius: 16px 16px 16px 4px; }
-        .lz-dot { width: 7px; height: 7px; background: #7617cf; border-radius: 50%; animation: lz-bounce 1.2s infinite; }
+        .lz-dot { width: 7px; height: 7px; background: #25F5A4; border-radius: 50%; animation: lz-bounce 1.2s infinite; }
         .lz-dot:nth-child(2) { animation-delay: 0.2s; }
         .lz-dot:nth-child(3) { animation-delay: 0.4s; }
         @keyframes lz-bounce { 0%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-7px); } }
@@ -205,14 +205,14 @@ const Chatbot: React.FC = () => {
       <div id="lz-chat-panel" className={open ? 'lz-open' : ''}>
         {/* Header */}
         <div style={{ padding: '14px 16px', borderBottom: '1px solid rgba(118,23,207,0.1)', display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg,#7617cf,#9b59b6)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg,#25F5A4,#00C87E)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
             </svg>
           </div>
           <div style={{ flex: 1 }}>
             <div style={{ color: '#1a1a2e', fontWeight: 600, fontSize: 14 }}>Asistente Lezac</div>
-            <div style={{ color: '#7617cf', fontSize: 11, display: 'flex', alignItems: 'center', gap: 4 }}>
+            <div style={{ color: '#25F5A4', fontSize: 11, display: 'flex', alignItems: 'center', gap: 4 }}>
               <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#25D366', display: 'inline-block' }}></span>
               en línea
             </div>
@@ -266,8 +266,8 @@ const Chatbot: React.FC = () => {
             rows={1}
             style={{ flex: 1, background: '#f7f5fb', border: '1px solid rgba(118,23,207,0.2)', borderRadius: 10, padding: '8px 12px', color: '#1a1a2e', fontSize: 14, resize: 'none', outline: 'none', lineHeight: 1.5, maxHeight: 120, overflowY: 'auto', fontFamily: 'inherit' }}
           />
-          <button onClick={sendMessage} disabled={typing} style={{ background: '#7617cf', border: 'none', borderRadius: 10, padding: '8px 12px', cursor: 'pointer', flexShrink: 0, opacity: typing ? 0.5 : 1, transition: 'opacity 0.2s' }}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <button onClick={sendMessage} disabled={typing} style={{ background: '#25F5A4', border: 'none', borderRadius: 10, padding: '8px 12px', cursor: 'pointer', flexShrink: 0, opacity: typing ? 0.5 : 1, transition: 'opacity 0.2s' }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A0A0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
             </svg>
           </button>
@@ -283,7 +283,7 @@ const Chatbot: React.FC = () => {
           bottom: 24,
           right: 24,
           zIndex: 9999,
-          background: 'linear-gradient(135deg,#7617cf,#9b59b6)',
+          background: 'linear-gradient(135deg,#25F5A4,#00C87E)',
           border: 'none',
           borderRadius: 9999,
           height: 52,
@@ -292,16 +292,16 @@ const Chatbot: React.FC = () => {
           alignItems: 'center',
           gap: 10,
           cursor: 'pointer',
-          color: '#fff',
+          color: '#0A0A0B',
           fontFamily: 'Inter, sans-serif',
           fontWeight: 600,
           fontSize: 14,
         }}
       >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A0A0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
         </svg>
-        <span>Asistente</span>
+        <span>Asistente Comercial</span>
       </button>
     </>
   );
