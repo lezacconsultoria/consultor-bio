@@ -44,12 +44,10 @@ const Chatbot: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const autoOpenedRef = useRef(false);
-
   useEffect(() => {
+    if (localStorage.getItem('lezac_chat_dismissed')) return;
     const timer = setTimeout(() => {
-      if (!autoOpenedRef.current) {
-        autoOpenedRef.current = true;
+      if (!localStorage.getItem('lezac_chat_dismissed')) {
         setOpen(true);
       }
     }, 10000);
@@ -217,7 +215,7 @@ const Chatbot: React.FC = () => {
               en línea
             </div>
           </div>
-          <button onClick={() => setOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#958DA1', padding: 4, borderRadius: 6, lineHeight: 1 }}>
+          <button onClick={() => { localStorage.setItem('lezac_chat_dismissed', '1'); setOpen(false); }} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#958DA1', padding: 4, borderRadius: 6, lineHeight: 1 }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
             </svg>
