@@ -303,6 +303,66 @@ const Bio: React.FC = () => {
           </div>
         </section>
 
+        {/* Diagnóstico Comercial CTA */}
+        <section className="bg-white dark:bg-slate-900/50 rounded-2xl p-6 md:p-10 shadow-2xl border border-slate-100 dark:border-slate-800 overflow-hidden relative">
+          <div className="absolute -top-24 -left-24 h-80 w-80 bg-emerald-400/10 blur-[120px] rounded-full"></div>
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="flex flex-col gap-4 text-center lg:text-left">
+              <div className="flex items-center justify-center lg:justify-start gap-4">
+                <span className="h-px w-12 bg-emerald-400/40"></span>
+                <span className="text-emerald-400 font-black text-[10px] tracking-[0.3em] uppercase">DIAGNÓSTICO ONLINE GRATUITO</span>
+              </div>
+              <h3 className="text-2xl lg:text-3xl font-black text-brand-dark dark:text-white leading-[1.1] tracking-tight">
+                Medí la <span className="italic text-emerald-400">inteligencia comercial</span> de tu empresa
+              </h3>
+              <p className="text-slate-400 text-sm font-medium leading-relaxed">
+                Respondé unas pocas preguntas y obtené al instante un informe con tu nivel de madurez comercial y los puntos donde estás perdiendo facturación.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start text-[10px] font-black tracking-widest uppercase text-slate-400">
+                <span className="flex items-center gap-2"><span className="material-symbols-outlined text-emerald-400 text-base">bolt</span>3 minutos</span>
+                <span className="flex items-center gap-2"><span className="material-symbols-outlined text-emerald-400 text-base">lock_open</span>Sin costo</span>
+                <span className="flex items-center gap-2"><span className="material-symbols-outlined text-emerald-400 text-base">insights</span>Resultado inmediato</span>
+              </div>
+              <a
+                href="https://dg.lezacconsultoria.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex items-center justify-center gap-4 py-4 px-8 bg-emerald-500 hover:bg-emerald-600 text-white font-black rounded-lg transition-all shadow-2xl shadow-emerald-200 dark:shadow-none text-sm uppercase tracking-widest active:scale-95 group"
+              >
+                HACER EL DIAGNÓSTICO
+                <span className="material-symbols-outlined text-2xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </a>
+            </div>
+
+            <div className="flex justify-center">
+              <div className="w-full max-w-[300px] bg-brand-dark rounded-xl p-5 border border-slate-700/50 shadow-[30px_30px_70px_-25px_rgba(0,0,0,0.5)] flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-[9px] font-black tracking-[0.3em] text-slate-500 uppercase">NIVEL DE MADUREZ</span>
+                  <span className="size-6 rounded-lg bg-emerald-400/15 flex items-center justify-center">
+                    <span className="material-symbols-outlined text-emerald-400 text-base">monitoring</span>
+                  </span>
+                </div>
+                {[
+                  { label: "Datos y métricas", value: "w-[35%]" },
+                  { label: "Cobertura territorial", value: "w-[55%]" },
+                  { label: "Seguimiento de clientes", value: "w-[42%]" },
+                  { label: "Automatización", value: "w-[25%]" },
+                ].map((b, i) => (
+                  <div key={i} className="flex flex-col gap-2">
+                    <span className="text-[10px] font-black tracking-widest text-slate-400 uppercase">{b.label}</span>
+                    <div className="h-2 w-full rounded-full bg-white/10 overflow-hidden">
+                      <div className={`h-full rounded-full bg-emerald-400 ${b.value}`}></div>
+                    </div>
+                  </div>
+                ))}
+                <p className="text-[10px] font-bold text-slate-500 leading-relaxed pt-2 border-t border-white/10">
+                  Ejemplo de informe. El tuyo se genera con tus propias respuestas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Ebook Card */}
         <section className="bg-white dark:bg-slate-900/50 rounded-[3rem] p-8 md:p-20 shadow-2xl border border-slate-100 dark:border-slate-800 overflow-hidden relative">
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 blur-[120px] rounded-full -mr-48 -mt-48"></div>
